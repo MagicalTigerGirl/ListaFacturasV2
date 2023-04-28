@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ListaFacturaFragment">
+
+    <fragment
+        android:id="@+id/ListaFacturaFragment"
+        android:name="com.example.listafacturasv2.ui.practica1.fragment.ListaFacturaFragment"
+        android:label="@string/lista_factura_fragment_label"
+        tools:layout="@layout/fragment_lista_factura">
+        <action
+            android:id="@+id/action_ListaFacturaFragment_to_FiltrosFacturaFragment"
+            app:destination="@id/FiltrosFacturaFragment" />
+        <action
+            android:id="@+id/action_ListaFacturaFragment_to_baseDialogFragment"
+            app:destination="@id/baseDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FiltrosFacturaFragment"
+        android:name="com.example.listafacturasv2.ui.practica1.fragment.FiltrosFacturaFragment"
+        android:label="@string/filtros_factura_fragment_label"
+        tools:layout="@layout/fragment_filtros_factura">
+        <action
+            android:id="@+id/action_FiltrosFacturaFragment_to_ListaFacturaFragment"
+            app:destination="@id/ListaFacturaFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/baseDialogFragment"
+        android:name="com.example.listafacturasv2.ui.basedialog.BaseDialogFragment"
+        android:label="BaseDialogFragment" />
+</navigation>
