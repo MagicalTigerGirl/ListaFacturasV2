@@ -1,18 +1,10 @@
 package com.example.listafacturasv2.ui.practica2.activity
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.viewpager.widget.ViewPager
-import com.example.listafacturasv2.R
 import com.example.listafacturasv2.databinding.ActivitySmartSolarBinding
 import com.example.listafacturasv2.ui.practica2.activity.ui.main.SectionsPagerAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
 class SmartSolarActivity : AppCompatActivity() {

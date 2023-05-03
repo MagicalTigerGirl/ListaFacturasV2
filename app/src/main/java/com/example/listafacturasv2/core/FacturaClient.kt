@@ -5,15 +5,7 @@ import com.example.listafacturasv2.data.network.FacturaService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object FacturaClient {
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://viewnextandroid.wiremockapi.cloud/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    private val retromock = Retromock.Builder()
-        .retrofit(retrofit)
-        .build()
+class FacturaClient(retrofit: Retrofit, retromock: Retromock) {
 
     val service = retrofit.create(FacturaService::class.java)
 

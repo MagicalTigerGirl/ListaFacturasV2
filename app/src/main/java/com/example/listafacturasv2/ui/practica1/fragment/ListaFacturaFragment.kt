@@ -1,14 +1,11 @@
 package com.example.listafacturasv2.ui.practica1.fragment
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.listafacturas.viewmodel.StateDataList
 import com.example.listafacturasv2.R
@@ -17,6 +14,7 @@ import com.example.listafacturasv2.data.model.Factura
 import com.example.listafacturasv2.databinding.FragmentListaFacturaBinding
 import com.example.listafacturasv2.ui.basedialog.BaseDialogFragment
 import com.example.listafacturasv2.viewmodel.FacturaViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 
 class ListaFacturaFragment : Fragment(), FacturaAdapter.OnManageFacturaListener {
@@ -24,7 +22,7 @@ class ListaFacturaFragment : Fragment(), FacturaAdapter.OnManageFacturaListener 
     private var _binding: FragmentListaFacturaBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: FacturaAdapter
-    private lateinit var viewModel: FacturaViewModel
+    private val viewModel by activityViewModel<FacturaViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,8 +70,6 @@ class ListaFacturaFragment : Fragment(), FacturaAdapter.OnManageFacturaListener 
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(requireActivity()).get(FacturaViewModel::class.java)
-
         viewModel.liveDataList.observe(viewLifecycleOwner) {
             when (it.state) {
                 StateDataList.DataState.SUCCESS -> {

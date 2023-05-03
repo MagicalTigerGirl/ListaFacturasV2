@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.listafacturasv2.data.dao.FacturaDao
 import com.example.listafacturasv2.data.model.Factura
 
-@Database(entities = [Factura::class], version = 5)
+@Database(entities = [Factura::class], version = 6)
 abstract class FacturasDatabase : RoomDatabase() {
 
     abstract fun facturaDao(): FacturaDao?

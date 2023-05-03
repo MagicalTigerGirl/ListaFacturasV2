@@ -3,6 +3,7 @@ package com.example.listafacturasv2.data.model
 import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 @Entity(tableName = "factura")
 data class Factura (

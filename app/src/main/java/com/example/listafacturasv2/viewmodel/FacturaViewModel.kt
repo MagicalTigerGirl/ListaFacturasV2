@@ -3,19 +3,19 @@ package com.example.listafacturasv2.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.listafacturasv2.data.repository.FacturaRepository
 import com.example.listafacturas.viewmodel.FilterResult
 import com.example.listafacturas.viewmodel.StateLiveDataList
 import com.example.listafacturasv2.data.model.Factura
+import com.example.listafacturasv2.data.repository.FacturaRepository
 import com.example.listafacturasv2.domain.GetFacturasUseCase
 import kotlinx.coroutines.launch
 
-class FacturaViewModel: ViewModel() {
+class FacturaViewModel(private val repository: FacturaRepository): ViewModel() {
 
     var liveDataList: StateLiveDataList<List<Factura>> = StateLiveDataList()
 
     val dateInit: String = "día/mes/año"
-    private var getFacturasUseCase = GetFacturasUseCase()
+    private var getFacturasUseCase = GetFacturasUseCase(repository)
 
     var list: List<Factura> = emptyList()
 
@@ -26,7 +26,7 @@ class FacturaViewModel: ViewModel() {
                 liveDataList.setNoData()
             else {
                 liveDataList.setSuccess(list)
-                importeMaxSelected = FacturaRepository.importeMaximo.toInt()
+                importeMaxSelected = repository.importeMaximo.toInt()
             }
         }
     }
@@ -39,16 +39,16 @@ class FacturaViewModel: ViewModel() {
                 val filteredList: List<Factura>
                 when (result.value) {
                     FilterResult.IMPORTE -> {
-                        filteredList = FacturaRepository.getListFilteredImporte(importeMaxSelected)
+                        filteredList = repository.getListFilteredImporte(importeMaxSelected)
                     }
                     FilterResult.IMPORTEHASTA -> {
-                        filteredList = FacturaRepository.getListFilteredAllHasta(
+                        filteredList = repository.getListFilteredAllHasta(
                             importeMaxSelected,
                             fechaHasta
                         )
                     }
                     FilterResult.ALL -> {
-                        filteredList = FacturaRepository.getListFilteredAll(
+                        filteredList = repository.getListFilteredAll(
                             importeMaxSelected,
                             fechaDesde,
                             fechaHasta

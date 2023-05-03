@@ -3,17 +3,17 @@ package com.example.listafacturasv2.ui.practica1.fragment
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
 import android.widget.SeekBar
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import com.example.listafacturasv2.data.repository.FacturaRepository
 import com.example.listafacturasv2.R
 import com.example.listafacturasv2.databinding.FragmentFiltrosFacturaBinding
 import com.example.listafacturasv2.viewmodel.FacturaViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,7 +22,8 @@ class FiltrosFacturaFragment : Fragment() {
 
     private var _binding: FragmentFiltrosFacturaBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: FacturaViewModel
+    private val viewModel by activityViewModel<FacturaViewModel>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +46,12 @@ class FiltrosFacturaFragment : Fragment() {
 
         initSeekBar()
 
+        onAplicarFiltros()
+
+        onEliminarFiltros()
+    }
+
+    private fun onAplicarFiltros() {
         binding.btnAplicarFiltros.setOnClickListener {
 
             viewModel.isFiltered = true
@@ -68,7 +75,9 @@ class FiltrosFacturaFragment : Fragment() {
 
             NavHostFragment.findNavController(this).navigateUp()
         }
+    }
 
+    private fun onEliminarFiltros() {
         binding.btnEliminarFiltros.setOnClickListener(View.OnClickListener {
 
             // DatePicker
@@ -76,7 +85,7 @@ class FiltrosFacturaFragment : Fragment() {
             viewModel.fechaHasta = viewModel.dateInit
             binding.btnDateDesde.text = viewModel.fechaDesde
             binding.btnDateHasta.text = viewModel.fechaHasta
-            binding.sbImporte.progress = FacturaRepository.importeMaximo.toInt()
+            binding.sbImporte.progress = 62
 
             // Checkbox
             binding.viewmodel?.bPagadas?.value = false
@@ -108,7 +117,7 @@ class FiltrosFacturaFragment : Fragment() {
     }
 
     private fun initSeekBar() {
-        val importeMax = FacturaRepository.importeMaximo.toInt()
+        val importeMax = 62
         binding.sbImporte.max = importeMax
         binding.tvImporteMax.text = importeMax.toString().plus(" €")
 
@@ -135,44 +144,11 @@ class FiltrosFacturaFragment : Fragment() {
     }
 
     private fun initDataPicker() {
-        binding.btnDateDesde.setOnClickListener(View.OnClickListener {
-            val c = Calendar.getInstance()
-
-            val popup= DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener{ _, year, monthOfYear, dayOfMonth ->
-                val days = if (dayOfMonth < 10) "0${dayOfMonth}" else "${dayOfMonth}"
-
-                val month = monthOfYear+1
-                val months = if (month < 10) "0${month}" else "${month}"
-
-                binding.btnDateDesde.text = getString(R.string.date, days, months, year.toString())
-            }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH))
-
-            popup.datePicker.maxDate = Calendar.getInstance().timeInMillis
-
-            popup.show()
-        })
-
-        binding.btnDateHasta.setOnClickListener(View.OnClickListener {
-            val c = Calendar.getInstance()
-
-            val popup= DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener{ _, year, monthOfYear, dayOfMonth ->
-                val days = if (dayOfMonth < 10) "0${dayOfMonth}" else "${dayOfMonth}"
-
-                val month = monthOfYear+1
-                val months = if (month < 10) "0${month}" else "${month}"
-
-                binding.btnDateHasta.text = getString(R.string.date, days, months, year.toString())
-            }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH))
-
-            if (!binding.btnDateDesde.text.toString().equals("día/mes/año"))
-                popup.datePicker.minDate = SimpleDateFormat("dd/MM/yyyy").parse(binding.btnDateDesde.text.toString() )!!.time
-            popup.show()
-        })
+        setupDateButton(binding.btnDateDesde)
+        setupDateButton(binding.btnDateHasta, binding.btnDateDesde)
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(requireActivity()).get(FacturaViewModel::class.java)
-
         binding.viewmodel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -180,6 +156,36 @@ class FiltrosFacturaFragment : Fragment() {
         binding.btnDateDesde.text = viewModel.fechaDesde
         binding.btnDateHasta.text = viewModel.fechaHasta
     }
+
+    private fun setupDateButton(button: Button, minDateButton: Button? = null) {
+        button.setOnClickListener {
+            val c = Calendar.getInstance()
+
+            val popup = DatePickerDialog(
+                requireContext(),
+                { _, year, monthOfYear, dayOfMonth ->
+                    val days = if (dayOfMonth < 10) "0${dayOfMonth}" else "${dayOfMonth}"
+                    val month = monthOfYear + 1
+                    val months = if (month < 10) "0${month}" else "${month}"
+                    button.text = getString(R.string.date, days, months, year.toString())
+                },
+                c.get(Calendar.YEAR),
+                c.get(Calendar.MONTH),
+                c.get(Calendar.DAY_OF_MONTH)
+            )
+
+            if (minDateButton != null) {
+                if (!minDateButton.text.toString().equals("día/mes/año"))
+                    popup.datePicker.minDate = SimpleDateFormat("dd/MM/yyyy").parse(minDateButton.text.toString()).time
+            }
+
+            if (minDateButton == null)
+                popup.datePicker.maxDate = Calendar.getInstance().timeInMillis
+
+            popup.show()
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

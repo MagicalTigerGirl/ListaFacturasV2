@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 
-object FacturaRepository {
+class FacturaRepository(private val client: FacturaClient) {
 
     private var facturaDao: FacturaDao? = null
     var importeMaximo: Double = 0.0
@@ -24,18 +24,17 @@ object FacturaRepository {
 
         return withContext(dispatcher) {
             val result: List<Factura>
-            result = if (MainApplication.isNetworkAvailable()) {
-                FacturaClient.service.listFacturas().body()?.facturas ?: emptyList()
-            } else
-                FacturaClient.serviceMock.listFacturas().body()?.facturas ?: emptyList()
-
+            result = client.service.listFacturas().body()?.facturas ?: emptyList()
+            // client.serviceMock.listFacturas().body()?.facturas ?: emptyList()
             result
         }
 
     }
 
-    fun getAllFacturasRoom(): List<Factura> {
-        return facturaDao!!.select()
+    suspend fun getAllFacturasRoom(): List<Factura> {
+        return withContext(dispatcher) {
+            facturaDao!!.select()
+        }
     }
 
     suspend fun insertAllRoom(list: List<Factura>) {

@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.listafacturasv2.R
-import com.example.listafacturasv2.ui.practica1.fragment.FiltrosFacturaFragment
 import com.example.listafacturasv2.ui.practica2.fragment.DetallesFragment
 import com.example.listafacturasv2.ui.practica2.fragment.EnergiaFragment
 import com.example.listafacturasv2.ui.practica2.fragment.MiInstalacionFragment
