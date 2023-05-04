@@ -1,13 +1,11 @@
 package com.example.listafacturasv2.ui.basedialog
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
+import android.app.Dialog
+import android.os.Bundle
+import androidx.annotation.NonNull
+import androidx.annotation.Nullable
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.NavHostFragment
 
 

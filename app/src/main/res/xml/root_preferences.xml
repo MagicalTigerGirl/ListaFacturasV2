@@ -1,0 +1,17 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/header">
+
+        <ListPreference
+            android:title="@string/title_http_request"
+            android:key="@string/key_http_request"
+            android:entries="@array/entries_http_requests"
+            android:entryValues="@array/values_http_requests"
+            android:defaultValue="RETROFIT">>
+        </ListPreference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="entries_http_requests" >
+        <item>Retrofit</item>
+        <item>Retromock</item>
+        <item>Ktor</item>
+    </string-array>
+
+    <string-array name="values_http_requests" >
+        <item>RETROFIT</item>
+        <item>RETROMOCK</item>
+        <item>KTOR</item>
+    </string-array>
+
+</resources>

@@ -105,13 +105,12 @@ class FiltrosFacturaFragment : Fragment() {
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.action_close -> {
-                        NavHostFragment.findNavController(this@FiltrosFacturaFragment).navigateUp()
-                        true
-                    }
-                    else -> false
-                }
+
+                return if (menuItem.itemId == R.id.action_close) {
+                    NavHostFragment.findNavController(this@FiltrosFacturaFragment).navigateUp()
+                    true
+                } else
+                    false
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }

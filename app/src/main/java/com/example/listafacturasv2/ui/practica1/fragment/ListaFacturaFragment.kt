@@ -53,13 +53,11 @@ class ListaFacturaFragment : Fragment(), FacturaAdapter.OnManageFacturaListener 
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.action_filter -> {
-                        NavHostFragment.findNavController(this@ListaFacturaFragment).navigate(R.id.action_ListaFacturaFragment_to_FiltrosFacturaFragment)
-                        true
-                    }
-                    else -> false
-                }
+                return if (menuItem.itemId == R.id.action_filter) {
+                    NavHostFragment.findNavController(this@ListaFacturaFragment).navigate(R.id.action_ListaFacturaFragment_to_FiltrosFacturaFragment)
+                    true
+                } else
+                    false
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }

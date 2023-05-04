@@ -6,8 +6,9 @@ import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 import com.example.listafacturasv2.data.dao.FacturaDao
 import com.example.listafacturasv2.data.model.Factura
+import com.example.listafacturasv2.data.model.FacturaRoom
 
-@Database(entities = [Factura::class], version = 6)
+@Database(entities = [FacturaRoom::class], version = 8)
 abstract class FacturasDatabase : RoomDatabase() {
 
     abstract fun facturaDao(): FacturaDao?

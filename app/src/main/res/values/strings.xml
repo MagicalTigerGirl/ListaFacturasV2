@@ -33,6 +33,20 @@
     <string name="tab_text_1">Mi instalación</string>
     <string name="tab_text_2">Energía</string>
     <string name="tab_text_3">Detalles</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="importe_ordenacion"> %s €</string>
+
+    <!-- Settings -->
+    <string name="header">Tipo de petición</string>
+    <string name="title_http_request">Solicitud Http</string>
+    <string name="key_http_request">http_request</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_smart_solar">Smart solar</string>
+    <string name="til_cau">CAU (Código autoconsumo)</string>
+    <string name="til_estado_solicitud">Estado solicitud alta consumidor</string>
+    <string name="til_tipo_autoconsumo">Tipo autoconsumo</string>
+    <string name="til_compensacion_excedentes">Compensación de excedentes</string>
+    <string name="til_potencial_instalacion">Potencia de instalación</string>
+    <string name="tv_energia">Estamos trabajando en mejorar la App. Tus paneles solares siguen produciendo, en breve podrás seguir viendo tu producción solar. Sentimos las molestias.</string>
+    <string name="title_facturas"> Factura</string>
+
 </resources>

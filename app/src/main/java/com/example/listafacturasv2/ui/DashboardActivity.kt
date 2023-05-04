@@ -2,13 +2,14 @@ package com.example.listafacturasv2.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.listafacturasv2.data.adapter.FacturaAdapter
+import com.example.listafacturasv2.R
 import com.example.listafacturasv2.data.adapter.PracticaAdapter
 import com.example.listafacturasv2.data.model.Practica
 import com.example.listafacturasv2.databinding.ActivityDashboardBinding
-import com.example.listafacturasv2.ui.practica1.activity.FacturaActivity
 
 class DashboardActivity : AppCompatActivity(), PracticaAdapter.OnManagePracticaListener {
 
@@ -21,7 +22,24 @@ class DashboardActivity : AppCompatActivity(), PracticaAdapter.OnManagePracticaL
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        getSupportActionBar()?.setDisplayShowTitleEnabled(false);
+
         initRecyclerView()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_dashboard, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (item.itemId == R.id.action_settings) {
+            val intent = Intent(this@DashboardActivity, SettingsActivity::class.java)
+            startActivity(intent)
+            true
+        } else
+            false
     }
 
     private fun initRecyclerView() {
