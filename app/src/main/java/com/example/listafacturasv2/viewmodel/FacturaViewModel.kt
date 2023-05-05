@@ -21,7 +21,10 @@ class FacturaViewModel(private val repository: FacturaRepository): ViewModel() {
 
     init {
         viewModelScope.launch {
+            liveDataList.setLoading()
+
             list = getFacturasUseCase()
+
             if (list.isEmpty())
                 liveDataList.setNoData()
             else {

@@ -1,6 +1,7 @@
 package com.example.listafacturasv2.ui.practica1.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -70,11 +71,17 @@ class ListaFacturaFragment : Fragment(), FacturaAdapter.OnManageFacturaListener 
     private fun initViewModel() {
         viewModel.liveDataList.observe(viewLifecycleOwner) {
             when (it.state) {
+                StateDataList.DataState.LOADING -> {
+                    binding.prbloading.visibility = View.VISIBLE
+                }
                 StateDataList.DataState.SUCCESS -> {
                     adapter.update(it.data)
+                    binding.prbloading.visibility = View.INVISIBLE
                     binding.tvNoData.visibility = View.INVISIBLE
                 }
-                StateDataList.DataState.NODATA -> binding.tvNoData.visibility = View.VISIBLE
+                StateDataList.DataState.NODATA -> {
+                    binding.tvNoData.visibility = View.VISIBLE
+                }
                 else -> {
                     StateDataList.DataState.ERROR
                 }
@@ -83,6 +90,7 @@ class ListaFacturaFragment : Fragment(), FacturaAdapter.OnManageFacturaListener 
 
         if (viewModel.isFiltered)
             viewModel.getDataList()
+
     }
 
     override fun onDestroyView() {

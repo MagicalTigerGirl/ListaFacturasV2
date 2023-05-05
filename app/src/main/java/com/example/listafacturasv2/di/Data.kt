@@ -67,7 +67,3 @@ val dataModule = module {
 val viewModelModule = module {
     viewModelOf(::FacturaViewModel)
 }
-
-enum class Qualifier {
-    ApiEndpoint
-}
