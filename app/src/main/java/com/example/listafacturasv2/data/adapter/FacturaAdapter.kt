@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.listafacturasv2.R
 import com.example.listafacturasv2.data.model.Factura
 import com.example.listafacturasv2.databinding.ItemFacturaBinding
+import com.example.listafacturasv2.ui.application.MainApplication
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -48,10 +49,10 @@ class FacturaAdapter(listener: OnManageFacturaListener): RecyclerView.Adapter<Fa
             binding.tvFecha.text = formato1.format(date).plus(" ").plus(formato2.format(date).substring(0,1).uppercase()).plus(formato2.format(date).substring(1))
 
             val estado: String = factura.descEstado
-            if (estado.equals("Pendiente de pago"))
+            if (MainApplication.context.getString(R.string.factura_estado_pendiente_pago).equals(estado))
                 binding.tvEstado.text = estado
 
-            binding.tvImporte.text = "${factura.importeOrdenacion} €"
+            binding.tvImporte.text = MainApplication.context.getString(R.string.factura_adapter_importe_ordenacion, factura.importeOrdenacion)
 
             itemView.setOnClickListener { listener.onShowFactura(factura) }
         }

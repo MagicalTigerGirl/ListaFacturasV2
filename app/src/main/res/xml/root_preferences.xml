@@ -2,14 +2,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:title="@string/header">
+        android:title="@string/root_preferences_title_http_request">
 
         <ListPreference
-            android:title="@string/title_http_request"
-            android:key="@string/key_http_request"
+            android:title="@string/root_preferences_list_http_request"
+            android:key="@string/root_preferennces_list_http_request_key"
             android:entries="@array/entries_http_requests"
             android:entryValues="@array/values_http_requests"
-            android:defaultValue="RETROFIT">>
+            android:defaultValue="RETROFIT">
         </ListPreference>
 
     </PreferenceCategory>

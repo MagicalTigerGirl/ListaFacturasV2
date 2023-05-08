@@ -35,11 +35,11 @@ class DashboardActivity : AppCompatActivity(), PracticaAdapter.OnManagePracticaL
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return if (item.itemId == R.id.action_settings) {
-            val intent = Intent(this@DashboardActivity, SettingsActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this@DashboardActivity, SettingsActivity::class.java))
             true
-        } else
+        } else {
             false
+        }
     }
 
     private fun initRecyclerView() {

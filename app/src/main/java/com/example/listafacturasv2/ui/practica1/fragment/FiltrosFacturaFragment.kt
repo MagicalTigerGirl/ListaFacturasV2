@@ -58,11 +58,11 @@ class FiltrosFacturaFragment : Fragment() {
 
             // Fechas
             val fechaDesde = binding.btnDateDesde.text.toString()
-            if (!fechaDesde.equals(viewModel.dateInit))
+            if (!viewModel.dateInit.equals(fechaDesde))
                 viewModel.fechaDesde = fechaDesde
 
             val fechaHasta = binding.btnDateHasta.text.toString()
-            if (!fechaHasta.equals(viewModel.dateInit))
+            if (!viewModel.dateInit.equals(fechaHasta))
                 viewModel.fechaHasta = fechaHasta
 
             // Importe
@@ -101,7 +101,7 @@ class FiltrosFacturaFragment : Fragment() {
 
         menu.addMenuProvider(object: MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_second_fragment, menu)
+                menuInflater.inflate(R.menu.menu_navigate_up, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -122,7 +122,7 @@ class FiltrosFacturaFragment : Fragment() {
 
         val importeProgress = viewModel.importeMaxSelected
         binding.sbImporte.progress = importeProgress
-        binding.tvImporte.text = getString(R.string.rango_importe, importeProgress.toString())
+        binding.tvImporte.text = getString(R.string.factura_filtros_importe_rango, importeProgress.toString())
 
         binding.sbImporte.setOnSeekBarChangeListener(
             object : SeekBar.OnSeekBarChangeListener {
@@ -136,7 +136,7 @@ class FiltrosFacturaFragment : Fragment() {
                     seekBar: SeekBar, progress: Int,
                     fromUser: Boolean
                 ) {
-                    binding.tvImporte.text = getString(R.string.rango_importe, progress.toString())
+                    binding.tvImporte.text = getString(R.string.factura_filtros_importe_rango, progress.toString())
                 }
             }
         )
@@ -166,7 +166,7 @@ class FiltrosFacturaFragment : Fragment() {
                     val days = if (dayOfMonth < 10) "0${dayOfMonth}" else "${dayOfMonth}"
                     val month = monthOfYear + 1
                     val months = if (month < 10) "0${month}" else "${month}"
-                    button.text = getString(R.string.date, days, months, year.toString())
+                    button.text = getString(R.string.factura_filtros_fecha, days, months, year.toString())
                 },
                 c.get(Calendar.YEAR),
                 c.get(Calendar.MONTH),
@@ -174,7 +174,7 @@ class FiltrosFacturaFragment : Fragment() {
             )
 
             if (minDateButton != null) {
-                if (!minDateButton.text.toString().equals("día/mes/año"))
+                if (!this.getString(R.string.date_inicial).equals(minDateButton.text.toString()))
                     popup.datePicker.minDate = SimpleDateFormat("dd/MM/yyyy").parse(minDateButton.text.toString()).time
             }
 

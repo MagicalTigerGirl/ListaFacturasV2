@@ -7,15 +7,19 @@ class GetFacturasUseCase(private val repository: FacturaRepository) {
 
     suspend operator fun invoke(): List<Factura> {
 
-        val list = repository.getAllFacturas()
+        var list = repository.getAllFacturas()
 
-        return if(list.isNotEmpty()) {
+        if(list.isNotEmpty()) {
             repository.deleteAllRoom()
             repository.insertAllRoom(list)
-            repository.importeMaximo = list.stream().max(Comparator.comparing(Factura::importeOrdenacion)).get().importeOrdenacion+1
-            list
         } else {
-            repository.getAllFacturasRoom()
+            list = repository.getAllFacturasRoom()
         }
+
+        if (list.isNotEmpty()) {
+            repository.importeMaximo = list.stream().max(Comparator.comparing(Factura::importeOrdenacion)).get().importeOrdenacion+1
+        }
+
+        return list
     }
 }

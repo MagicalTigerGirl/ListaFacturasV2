@@ -11,15 +11,11 @@ import com.example.listafacturasv2.databinding.ItemPracticaBinding
 
 class PracticaAdapter(listener: OnManagePracticaListener): RecyclerView.Adapter<PracticaAdapter.ViewHolder>() {
 
-    var practicas: ArrayList<Practica>
+    var practicas: ArrayList<Practica> = PracticaRepository.list
     var listener: OnManagePracticaListener = listener
 
     interface OnManagePracticaListener {
         fun onNavigationPractica(practica: Practica)
-    }
-
-    init {
-        this.practicas = PracticaRepository.list
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

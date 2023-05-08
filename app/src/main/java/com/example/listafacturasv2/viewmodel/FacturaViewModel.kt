@@ -5,16 +5,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.listafacturas.viewmodel.FilterResult
 import com.example.listafacturas.viewmodel.StateLiveDataList
+import com.example.listafacturasv2.R
 import com.example.listafacturasv2.data.model.Factura
 import com.example.listafacturasv2.data.repository.FacturaRepository
 import com.example.listafacturasv2.domain.GetFacturasUseCase
+import com.example.listafacturasv2.ui.application.MainApplication
 import kotlinx.coroutines.launch
 
 class FacturaViewModel(private val repository: FacturaRepository): ViewModel() {
+    val dateInit: String = MainApplication.context.getString(R.string.date_inicial)
 
     var liveDataList: StateLiveDataList<List<Factura>> = StateLiveDataList()
 
-    val dateInit: String = "día/mes/año"
     private var getFacturasUseCase = GetFacturasUseCase(repository)
 
     var list: List<Factura> = emptyList()
@@ -63,9 +65,8 @@ class FacturaViewModel(private val repository: FacturaRepository): ViewModel() {
                 }
                 list = if (isChecked) {
                     filteredList.filter {
-                        it.descEstado.equals("Pendiente de pago") && bPendientePagos.value == true || it.descEstado.equals(
-                            "Pagada"
-                        ) && bPagadas.value == true
+                        MainApplication.context.getString(R.string.factura_estado_pendiente_pago).equals(it.descEstado) && bPendientePagos.value == true ||
+                                MainApplication.context.getString(R.string.factura_estado_pagada).equals(it.descEstado) && bPagadas.value == true
                     }
                 } else {
                     filteredList
@@ -102,9 +103,9 @@ class FacturaViewModel(private val repository: FacturaRepository): ViewModel() {
     var result: MutableLiveData<FilterResult> = MutableLiveData()
 
     fun filter() {
-        if (fechaDesde.equals(dateInit) && fechaHasta.equals(dateInit))
+        if (dateInit.equals(fechaDesde) && dateInit.equals(fechaHasta))
             result.value = FilterResult.IMPORTE
-        else if (fechaDesde.equals(dateInit) && !fechaHasta.equals(dateInit))
+        else if (dateInit.equals(fechaDesde) && !dateInit.equals(fechaHasta))
             result.value = FilterResult.IMPORTEHASTA
         else
             result.value = FilterResult.ALL

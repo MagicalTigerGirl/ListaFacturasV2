@@ -10,9 +10,9 @@ import com.example.listafacturasv2.ui.practica2.fragment.EnergiaFragment
 import com.example.listafacturasv2.ui.practica2.fragment.MiInstalacionFragment
 
 private val TAB_TITLES = arrayOf(
-    R.string.tab_text_1,
-    R.string.tab_text_2,
-    R.string.tab_text_3
+    R.string.smart_solar_sections_pager_adapter_tab_1,
+    R.string.smart_solar_sections_pager_adapter_tab_2,
+    R.string.smart_solar_sections_pager_adapter_tab_3
 )
 
 class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :

@@ -7,7 +7,7 @@
     tools:context=".ui.practica2.fragment.EnergiaFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgEnergia"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_marginTop="64dp"
@@ -17,15 +17,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvDetalles"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="120dp"
-        android:text="@string/tv_energia"
+        android:text="@string/smart_solar_energia_tv_detalles"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imgEnergia" />
 </androidx.constraintlayout.widget.ConstraintLayout>

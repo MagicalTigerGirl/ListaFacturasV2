@@ -35,7 +35,7 @@ class DetallesFragment : Fragment() {
     private fun showPopup() {
         val layoutInflater = layoutInflater
 
-        val customView: View = layoutInflater.inflate(R.layout.popup_estado, null)
+        val customView: View = layoutInflater.inflate(R.layout.smart_solar_detalles_popup_estado, null)
 
         val button = customView.findViewById(R.id.btnAceptar) as Button
 

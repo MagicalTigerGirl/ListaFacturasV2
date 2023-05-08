@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:paddingLeft="16dp"
         android:paddingBottom="16dp"
-        android:text="@string/title_facturas"
+        android:text="@string/activity_factura_title"
         android:textAppearance="@style/Toolbar.TitleText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,14 +33,14 @@
         android:id="@+id/tvNoData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_datos"
+        android:text="@string/factura_lista_tv_no_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        android:id="@+id/prbloading"
+        android:id="@+id/prbLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

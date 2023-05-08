@@ -1,7 +1,6 @@
 package com.example.listafacturasv2.ui.practica1.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -50,7 +49,7 @@ class ListaFacturaFragment : Fragment(), FacturaAdapter.OnManageFacturaListener 
 
         menu.addMenuProvider(object: MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_main, menu)
+                menuInflater.inflate(R.menu.menu_factura, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -72,14 +71,15 @@ class ListaFacturaFragment : Fragment(), FacturaAdapter.OnManageFacturaListener 
         viewModel.liveDataList.observe(viewLifecycleOwner) {
             when (it.state) {
                 StateDataList.DataState.LOADING -> {
-                    binding.prbloading.visibility = View.VISIBLE
+                    binding.prbLoading.visibility = View.VISIBLE
                 }
                 StateDataList.DataState.SUCCESS -> {
                     adapter.update(it.data)
-                    binding.prbloading.visibility = View.INVISIBLE
+                    binding.prbLoading.visibility = View.INVISIBLE
                     binding.tvNoData.visibility = View.INVISIBLE
                 }
                 StateDataList.DataState.NODATA -> {
+                    binding.prbLoading.visibility  = View.INVISIBLE
                     binding.tvNoData.visibility = View.VISIBLE
                 }
                 else -> {

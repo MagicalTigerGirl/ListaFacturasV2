@@ -7,7 +7,7 @@
     tools:context=".ui.practica2.fragment.MiInstalacionFragment">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgMiInstalacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/grafico"

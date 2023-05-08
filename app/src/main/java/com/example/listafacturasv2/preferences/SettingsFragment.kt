@@ -24,7 +24,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         menu.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_second_fragment, menu)
+                menuInflater.inflate(R.menu.menu_navigate_up, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {

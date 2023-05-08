@@ -26,7 +26,7 @@
             android:textAppearance="@style/Toolbar.TitleText"
             android:paddingLeft="16dp"
             android:paddingBottom="16dp"
-            android:text="@string/title_smart_solar"/>
+            android:text="@string/activity_smart_solar_title"/>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"

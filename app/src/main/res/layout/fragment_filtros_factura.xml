@@ -21,7 +21,7 @@
             android:layout_marginStart="64dp"
             android:layout_marginEnd="64dp"
             android:background="@drawable/button_estados"
-            android:text="@string/btn_aplicar"
+            android:text="@string/factura_filtros_btn_aplicar"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/btnEliminarFiltros"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:background="@android:color/transparent"
-            android:text="@string/btn_eliminar_filtros"
+            android:text="@string/factura_filtros_btn_eliminar"
             android:textColor="@color/gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,27 +54,27 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvTitleFactura"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:paddingLeft="16dp"
                     android:paddingBottom="16dp"
-                    android:text="@string/title_facturas"
+                    android:text="@string/activity_factura_title"
                     android:textAppearance="@style/Toolbar.TitleText"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tvTitleFecha"
+                    android:id="@+id/tvHeaderFecha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@string/title_fecha_emision"
+                    android:text="@string/factura_filtros_header_fecha_emision"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleFactura" />
 
                 <TextView
                     android:id="@+id/tvDesde"
@@ -82,10 +82,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/desde"
+                    android:text="@string/factura_filtros_fecha_emision_desde"
                     android:textColor="@android:color/darker_gray"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTitleFecha" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvHeaderFecha" />
 
                 <Button
                     android:id="@+id/btnDateDesde"
@@ -105,11 +105,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/hasta"
+                    android:text="@string/factura_filtros_fecha_emision_hasta"
                     android:textColor="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTitleFecha" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvHeaderFecha" />
 
                 <Button
                     android:id="@+id/btnDateHasta"
@@ -138,12 +138,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/btnDateDesde" />
 
                 <TextView
-                    android:id="@+id/tvTitleImporte"
+                    android:id="@+id/tvHeaderImporte"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/title_importe"
+                    android:text="@string/factura_filtros_header_importe"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -154,19 +154,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/importe_minimo"
+                    android:text="@string/factura_filtros_importe_minimo"
                     android:textColor="@color/green_700"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTitleImporte" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvHeaderImporte" />
 
                 <TextView
                     android:id="@+id/tvImporteMin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@string/importe_minimo"
+                    android:text="@string/factura_filtros_importe_minimo"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvImporte" />
 
@@ -202,12 +202,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/sbImporte" />
 
                 <TextView
-                    android:id="@+id/tvTitleEstado"
+                    android:id="@+id/tvHeaderEstado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/title_estado"
+                    android:text="@string/factura_filtros_header_estado"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -220,9 +220,9 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:checked="@={viewmodel.BPagadas}"
-                    android:text="@string/cb_pagadas"
+                    android:text="@string/factura_filtros_estado_cb_pagadas"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTitleEstado" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvHeaderEstado" />
 
                 <CheckBox
                     android:id="@+id/cbAnuladas"
@@ -230,7 +230,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:checked="@={viewmodel.BAnuladas}"
-                    android:text="@string/cb_anuladas"
+                    android:text="@string/factura_filtros_estado_cb_anuladas"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cbPagadas" />
 
@@ -240,7 +240,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:checked="@={viewmodel.BCuotaFija}"
-                    android:text="@string/cb_cuota_fija"
+                    android:text="@string/factura_filtros_estado_cb_cuota_fija"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cbAnuladas" />
 
@@ -250,7 +250,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:checked="@={viewmodel.BPendientePagos}"
-                    android:text="@string/cb_pendiente_pago"
+                    android:text="@string/factura_filtros_estado_cb_pendiente_pago"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cbCuotaFija" />
 
@@ -260,7 +260,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:checked="@={viewmodel.BPlanPago}"
-                    android:text="@string/cb_plan_pago"
+                    android:text="@string/factura_filtros_estado_cb_plan_pago"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cbPendientePago" />
 

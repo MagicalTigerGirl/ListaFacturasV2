@@ -1,52 +1,77 @@
 <resources>
     <string name="app_name">ListaFacturasV2</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
+
+    <!-- Navigation -->
     <string name="lista_factura_fragment_label">Facturas</string>
     <string name="filtros_factura_fragment_label">Filtrar facturas</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_factura">FacturaActivity</string>
     <string name="title_activity_smart_solar">SmartSolarActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 
-    <string name="pendiente_pago">Pendiente de pago</string>
+    <!-- Factura estados -->
+    <string name="factura_estado_pendiente_pago">Pendiente de pago</string>
+    <string name="factura_estado_pagada">Pagada</string>
+
+    <!-- Factura Adapter -->
+    <string name="factura_adapter_importe_ordenacion">%.2f €</string>
+
+    <!-- Factura ViewModel -->
     <string name="date_inicial">día/mes/año</string>
-    <string name="title_fecha_emision">Con fecha de emisión</string>
-    <string name="desde">Desde:</string>
-    <string name="hasta">Hasta:</string>
-    <string name="title_importe">Por un importe</string>
-    <string name="importe_minimo">0 €</string>
-    <string name="title_estado">Por estado</string>
-    <string name="cb_pagadas">Pagadas</string>
-    <string name="cb_anuladas">Anuladas</string>
-    <string name="cb_cuota_fija">Cuota Fija</string>
-    <string name="cb_pendiente_pago">Pendientes de pago</string>
-    <string name="cb_plan_pago">Plan de pago</string>
-    <string name="btn_aplicar">Aplicar</string>
-    <string name="btn_eliminar_filtros">Eliminar filtros</string>
-    <string name="no_datos">NO HAY DATOS</string>
-    <string name="rango_importe">0€ - %1$s €</string>
-    <string name="date">%1$s/%2$s/%3$s</string>
-    <string name="title_activity_a">a</string>
-    <string name="tab_text_1">Mi instalación</string>
-    <string name="tab_text_2">Energía</string>
-    <string name="tab_text_3">Detalles</string>
-    <string name="importe_ordenacion"> %s €</string>
+
+    <!-- Factura Activity -->
+    <string name="activity_factura_title"> Factura</string>
+
+    <!-- Factura Lista Fragment-->
+    <string name="factura_lista_tv_no_data">NO HAY DATOS</string>
+
+    <!-- Factura Filtros Fragment -->
+    <string name="factura_filtros_btn_aplicar">Aplicar</string>
+    <string name="factura_filtros_btn_eliminar">Eliminar filtros</string>
+    <string name="factura_filtros_header_fecha_emision">Con fecha de emisión</string>
+    <string name="factura_filtros_fecha_emision_desde">Desde:</string>
+    <string name="factura_filtros_fecha_emision_hasta">Hasta:</string>
+    <string name="factura_filtros_fecha">%1$s/%2$s/%3$s</string>
+    <string name="factura_filtros_header_importe">Por un importe</string>
+    <string name="factura_filtros_importe_minimo">0 €</string>
+    <string name="factura_filtros_importe_rango">0€ - %1$s €</string>
+    <string name="factura_filtros_header_estado">Por estado</string>
+    <string name="factura_filtros_estado_cb_pagadas">Pagadas</string>
+    <string name="factura_filtros_estado_cb_anuladas">Anuladas</string>
+    <string name="factura_filtros_estado_cb_cuota_fija">Cuota Fija</string>
+    <string name="factura_filtros_estado_cb_pendiente_pago">Pendientes de pago</string>
+    <string name="factura_filtros_estado_cb_plan_pago">Plan de pago</string>
+
+    <!-- Smart Solar Activity-->
+    <string name="activity_smart_solar_title">Smart solar</string>
+
+    <!-- Smart Solar Sections Pager Adapter-->
+    <string name="smart_solar_sections_pager_adapter_tab_1">Mi instalación</string>
+    <string name="smart_solar_sections_pager_adapter_tab_2">Energía</string>
+    <string name="smart_solar_sections_pager_adapter_tab_3">Detalles</string>
+
+    <!-- Smart Solar Detalles Fragment -->
+    <string name="smart_solar_detalles_til_cau">CAU (Código autoconsumo)</string>
+    <string name="smart_solar_detalles_til_estado_solicitud">Estado solicitud alta consumidor</string>
+    <string name="smart_solar_detalles_til_tipo_autoconsumo">Tipo autoconsumo</string>
+    <string name="smart_solar_detalles_til_compensacion_excedentes">Compensación de excedentes</string>
+    <string name="smart_solar_detalles_til_potencial_instalacion">Potencia de instalación</string>
+
+    <!-- Smart Solar Energia Fragment -->
+    <string name="smart_solar_energia_tv_detalles">Estamos trabajando en mejorar la App. Tus paneles solares siguen produciendo, en breve podrás seguir viendo tu producción solar. Sentimos las molestias.</string>
+
+    <!-- Smart Solar Detalles Fragment -->
+    <string name="smart_solar_detalles_popup_estado_title">Estado solicitud autoconsumo</string>
+    <string name="smart_solar_detalles_popup_estado_message">El tiempo estimado de activación de tu autoconsumo es de 1 a 2 meses, éste variará en función de tu comunidad autónoma y distribuidora</string>
+    <string name="smart_solar_detalles_popup_estado_btn">Aceptar</string>
 
     <!-- Settings -->
-    <string name="header">Tipo de petición</string>
-    <string name="title_http_request">Solicitud Http</string>
-    <string name="key_http_request">http_request</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <string name="title_smart_solar">Smart solar</string>
-    <string name="til_cau">CAU (Código autoconsumo)</string>
-    <string name="til_estado_solicitud">Estado solicitud alta consumidor</string>
-    <string name="til_tipo_autoconsumo">Tipo autoconsumo</string>
-    <string name="til_compensacion_excedentes">Compensación de excedentes</string>
-    <string name="til_potencial_instalacion">Potencia de instalación</string>
-    <string name="tv_energia">Estamos trabajando en mejorar la App. Tus paneles solares siguen produciendo, en breve podrás seguir viendo tu producción solar. Sentimos las molestias.</string>
-    <string name="title_facturas"> Factura</string>
+    <string name="root_preferences_title_http_request">Tipo de petición</string>
+    <string name="root_preferences_list_http_request">Solicitud Http</string>
+    <string name="root_preferennces_list_http_request_key">http_request</string>
+
+    <!-- Menu options -->
+    <string name="menu_dashboard_action_settings">Configuración</string>
+    <string name="menu_factura_action_filter">Filtros</string>
+    <string name="menu_navigate_up_action_close">Cerrar</string>
 
 </resources>

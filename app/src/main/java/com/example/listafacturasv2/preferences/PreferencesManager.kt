@@ -7,7 +7,7 @@ class PreferencesManager(context: Context) {
     private val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     fun getHttpRequest(): String {
-        return sharedPreferences.getString(KEY_HTTP_REQUEST, "") ?: ""
+        return sharedPreferences.getString(KEY_HTTP_REQUEST, "RETROFIT") ?: ""
     }
 
     companion object {
